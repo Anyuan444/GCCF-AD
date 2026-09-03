@@ -37,7 +37,7 @@ wandb
 If PyTorch cannot be installed directly through pip, please install the CUDA version from the official PyTorch website.
 # 2. Dataset
 This project uses the MVTec 3D-AD dataset.
-Dataset download link:
+'''Dataset download link:
 https://www.mvtec.com/research-teaching/datasets/mvtec-3d-ad
 After downloading, organize the dataset as follows:
 datasets/
@@ -58,6 +58,7 @@ Each category should contain the official training and testing folders from MVTe
 Supported categories:
 
 bagel, cable_gland, carrot, cookie, dowel, foam, peach, potato, rope, tire
+'''
 # 3. Project Structure
 ## 
 DCMF-AD/
