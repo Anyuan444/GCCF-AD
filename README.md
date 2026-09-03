@@ -12,7 +12,7 @@ The framework mainly contains:
 - Patch-level Refinement and Localization Head (PRLH) for anomaly map refinement
 - End-to-end multimodal anomaly detection and localization on MVTec 3D-AD
 - # 1. Environment
-''' text- Python 3.9
+```text- Python 3.9
 CUDA 11.8
 PyTorch 2.5.1+cu118
 Torchvision 0.20.1+cu118
@@ -35,7 +35,7 @@ Pillow
 wandb
 
 If PyTorch cannot be installed directly through pip, please install the CUDA version from the official PyTorch website.
-'''
+```
 # 2. Dataset
 This project uses the MVTec 3D-AD dataset.
 '''Dataset download link:
