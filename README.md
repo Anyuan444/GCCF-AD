@@ -58,3 +58,23 @@ Each category should contain the official training and testing folders from MVTe
 Supported categories:
 
 bagel, cable_gland, carrot, cookie, dowel, foam, peach, potato, rope, tire
+# 3. Project Structure
+## 
+DCMF-AD/
+├── train.py
+├── test.py
+├── models/
+│   ├── dataset.py
+│   ├── features.py
+│   ├── feature_transfer_nets.py
+│   ├── full_models.py
+│   ├── pointnet2_utils.py
+│   └── ...
+├── utils/
+│   ├── general_utils.py
+│   ├── metrics_utils.py
+│   └── ...
+├── results/
+├── checkpoints_CFM_mvtec/
+├── requirements.txt
+└── README.md
