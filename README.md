@@ -61,7 +61,7 @@ Supported categories:
 bagel, cable_gland, carrot, cookie, dowel, foam, peach, potato, rope, tire
 ```
 # 3. Project Structure
-## 
+```text ## 
 DCMF-AD/
 ├── train.py
 ├── test.py
@@ -80,3 +80,72 @@ DCMF-AD/
 ├── checkpoints_CFM_mvtec/
 ├── requirements.txt
 └── README.md
+```
+# 4. Training
+Run the following command to train the model on one category:
+```text python train.py \
+  --dataset_path ./datasets/mvtec_3d_anomaly_detection \
+  --checkpoint_savepath ./checkpoints_CFM_mvtec \
+  --class_name foam \
+  --epochs_no 50 \
+  --batch_size 4
+
+Example for another category:
+
+python train.py \
+  --dataset_path ./datasets/mvtec_3d_anomaly_detection \
+  --checkpoint_savepath ./checkpoints_CFM_mvtec \
+  --class_name bagel \
+  --epochs_no 50 \
+  --batch_size 4
+
+During training, the model progressively optimizes:
+
+2D→3D feature mapping
+3D→2D feature mapping
+Deep feature contrastive loss
+Adaptive fusion layer
+Lightweight detection head
+
+The training checkpoints will be saved to:
+
+checkpoints_CFM_mvtec/
+└── foam/
+    ├── CFM_2Dto3D_foam_50ep_4bs.pth
+    ├── CFM_3Dto2D_foam_50ep_4bs.pth
+    ├── FusionLayer_foam_50ep_4bs.pth
+    ├── JointDet_foam_50ep_4bs.pth
+    ├── training_steps_foam_50ep_4bs.csv
+    └── training_epochs_foam_50ep_4bs.csv
+```
+# 5. Testing
+After training, run inference with:
+```text python test.py \
+  --dataset_path ./datasets/mvtec_3d_anomaly_detection \
+  --checkpoint_folder ./checkpoints_CFM_mvtec \
+  --class_name foam \
+  --epochs_no 50 \
+  --batch_size 4
+
+The testing script loads the trained CFM modules, FusionLayer, and JointDet. It then generates anomaly maps and computes evaluation metrics.
+```
+# 6.Important Notes
+```textMake sure the dataset path is correct.
+If the following error occurs:
+ValueError: num_samples should be a positive integer value, but got num_samples=0
+
+it usually means that the dataset path or folder structure is incorrect.
+
+The checkpoint path used for testing must be the same as the path used during training.
+The class_name, epochs_no, and batch_size used during testing should match the training configuration.
+
+For example, if training uses:
+
+--class_name foam --epochs_no 50 --batch_size 4
+
+then testing should also use:
+
+--class_name foam --epochs_no 50 --batch_size 4
+
+Otherwise, the checkpoint file names may not match.
+```
