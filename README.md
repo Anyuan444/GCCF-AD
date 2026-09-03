@@ -40,7 +40,7 @@ This project uses the MVTec 3D-AD dataset.
 '''Dataset download link:
 https://www.mvtec.com/research-teaching/datasets/mvtec-3d-ad
 After downloading, organize the dataset as follows:
-datasets/
+'''datasets/
 └── mvtec_3d_anomaly_detection/
     ├── bagel/
     ├── cable_gland/
@@ -52,7 +52,7 @@ datasets/
     ├── potato/
     ├── rope/
     └── tire/
-
+'''
 Each category should contain the official training and testing folders from MVTec 3D-AD.
 
 Supported categories:
